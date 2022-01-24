@@ -9,14 +9,15 @@
 - VSCode
 - JavaScript
 - Node.JS
+- OpenWeather One Call API
 
 ## Website:
 
-https://raymondcerneytech.github.io/ /
+https://raymondcerneytech.github.io/Weather-Dashboard/
 
 ### Preview:
 
-![Picture of _____________](./assets/images/ .PNG)
+![Picture of Weather Dashboard](./assets/images/weatherDashboard.PNG)
 
 ### Author:
 
