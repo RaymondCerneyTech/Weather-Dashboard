@@ -20,10 +20,12 @@
 			<div class="search-bar">
 				<div class="search-city">
 					<h1>Search for a City:</h1>
-					<input class="search-input" title="search" type="text" id="search"
-						placeholder="San Diego" />
-					<button class="search-btn" onclick="myFunction()">Search</button>
-					<div id="response-container"></div>
+					<form id="city-form">
+						<input class="search-input" name="search" type="text" id="search"
+							placeholder="San Diego" autofocus="true" />
+						<button type="submit" class="search-btn" id="search-button"
+							onclick="myFunction()">Search</button>
+					</form>
 				</div>
 				<div>
 					<ul class="cities">
