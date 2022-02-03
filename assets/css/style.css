@@ -36,8 +36,8 @@ header h1 {
 
 .search-bar {
 	flex-direction: column;
-	width: 25%;
-	margin: 0 10px;
+	width: 20%;
+	margin: 0 30px 0 10px;
 	padding-top: 10px;
 	height: 900px;
 }
@@ -94,6 +94,19 @@ header h1 {
 	border-top: medium solid black;
 }
 
+.city{
+	display: block;
+	height: 8%;
+	background-color:#b7bdfa;
+	color: black;
+	font-weight: bold;
+	font-size: large;
+	border: thin solid #b7bdfa;
+	border-radius: 5px;
+	margin-top: 25px;
+	padding: 10px 40%;
+}
+
 .city-statistics {
 	display: flex;
 	width: 100%;
@@ -106,6 +119,7 @@ header h1 {
 .main-labels {
 	display: flex;
 	flex-direction: row;
+	margin:10px 0 10px 10px;
 }
 
 .city-name,
@@ -113,6 +127,15 @@ header h1 {
 .main-icon {
 	display: flex;
 	font-weight: bold;
+	font-size: 45px;
+	height: 50px;
+}
+
+.main-date,
+.main-icon {
+	display: flex;
+	font-weight: bold;
+	margin-left: 10px;	
 }
 
 .main-temp,
@@ -124,7 +147,17 @@ header h1 {
 	height: 15%;
 	width: 100%;
 	font-size: 20px;
-	margin: 10px;
+	margin: 15px 10px 0 10px;
+}
+
+.uv-container{
+	background-color:darkseagreen;
+	border: thin solid darkseagreen;
+	border-radius: 5px;
+	margin-left: 10px;
+	padding-bottom: 10px;
+	width:75px;
+	height: 35px;
 }
 
 .five-day {
