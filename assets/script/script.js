@@ -9,6 +9,7 @@ var todayTemp = document.querySelector(".main-temp");
 var todayWind = document.querySelector(".main-wind");
 var todayHumidity = document.querySelector(".main-humidity");
 var todayUV = document.querySelector(".uv-container");
+var cities = document.querySelector(".cities");
 
 var day1 = document.getElementById("day-1");
 var day2 = document.getElementById("day-2");
@@ -16,11 +17,11 @@ var day3 = document.getElementById("day-3");
 var day4 = document.getElementById("day-4");
 var day5 = document.getElementById("day-5");
 
-var dayDate = getElementsByClassName("date");
-var dayIcon = getElementsByClassName("icon");
-var dayTemp = getElementsByClassName("temp");
-var dayWind = getElementsByClassName("wind");
-var dayHumidity = getElementsByClassName("humidity");
+var dayDate = document.querySelector(".date");
+var dayIcon = document.querySelector(".icon");
+var dayTemp = document.querySelector(".temp");
+var dayWind = document.querySelector(".wind");
+var dayHumidity = document.querySelector(".humidity");
 
 var apiKey = "&appid=a45105594dd7feb0a9436cca97d6a372";
 var url = "https://api.openweathermap.org/data/2.5/";
@@ -29,14 +30,14 @@ var one = "onecall?";
 var units = "&units=imperial";
 var iconURL = "http://openweathermap.org/img/wn/";
 
-cityForm.addEventListener("submit", formSubmitHandler);
+var pastCities = [];
 
 function getWeather(city) {
 	currentCity = "";
 	lat = "";
 	lon = "";
 
-	fetch(baseURL + weather + "q=" + city + ",us" + units + apiKey)
+	fetch(url + weather + "q=" + city + ",us" + units + apiKey)
 		.then(function (response) {
 			return response.json();
 		})
@@ -45,13 +46,13 @@ function getWeather(city) {
 			lat = data.coord.lat;
 			lon = data.coord.lon;
 
-			fetch(baseURL + one + "lat=" + lat + "&lon=" + lon + units + "&exclude=minutely,hourly,alerts" + apiKey)
+			fetch(url + one + "lat=" + lat + "&lon=" + lon + units + "&exclude=minutely,hourly,alerts" + apiKey)
 				.then(function (response) {
 					return response.json();
 				})
 				.then(function (data) {
 					var today = new Date(data.current.dt * 1000);
-					var date = (today.getMonth() + 1) + "/" + today.getDate() + "/" + today.getFullYear();
+					var date = today.getMonth() + 1 + "/" + today.getDate() + "/" + today.getFullYear();
 					var icon = data.current.weather[0].icon;
 					var iconDescription = data.current.weather[0].description;
 					var temp = data.current.temp + "	\xB0F";
@@ -65,25 +66,21 @@ function getWeather(city) {
 					todayTemp.innerHTML = temp;
 					todayWind.innerHTML = wind;
 					todayHumidity.innerHTML = humidity;
-					
+
 					todayUV.innerText = UVIndex;
 					if (UVIndex > 8) {
 						todayUV.style.background = "red";
-					}
-					else if (UVIndex < 8 && UVIndex > 6) {
+					} else if (UVIndex < 8 && UVIndex > 6) {
 						todayUV.style.background = "orange";
-					}
-					else {
+					} else {
 						todayUV.style.background = "green";
 					}
 
-					for (var i = 1; i <= 5; i++) { 
-
-
+					for (var i = 1; i <= 5; i++) {
 						var futureDay = document.getElementById("day-" + i.toString());
 						var futureDate = new Date(data.daily[i].dt * 1000);
 						var futureDateForm = futureDate.getMonth() + 1 + "/" + futureDate.getDate() + "/" + futureDate.getFullYear();
-						var futureIcon =  data.daily[i].weather[0].icon;
+						var futureIcon = data.daily[i].weather[0].icon;
 						var futureIconDescription = data.daily[i].weather[0].description;
 
 						futureDay.dayDate.textContent = futureDateForm;
@@ -92,19 +89,18 @@ function getWeather(city) {
 						futureDay.dayWind.textContent = data.daily[i].wind_speed + " MPH";
 						futureDay.dayHumidity.textContent = data.daily[i].humidity + " %";
 					}
-				}
-				);
+				});
 		});
 }
 
 document.getElementById("search-button").addEventListener("click", function (event) {
 	event.preventDefault();
 	var inputSearch = document.getElementById("search");
-currentCity = inputValue.value;
+	currentCity = inputSearch.value;
 	if (currentCity === "") {
 		document.getElementById("search").classList.add("is-invalid");
 	} else {
-		GetCurrentWeather(currentCity);
+		getWeather(currentCity);
 		document.getElementById("search").classList.remove("is-invalid");
 		AddToRecent(currentCity);
 	}
@@ -113,7 +109,6 @@ currentCity = inputValue.value;
 });
 
 function LoadCities() {
-	var cities = document.getElementByClass("cities");
 	cities.innerHTML = "";
 	for (var i = 0; i < cities.length; i++) {
 		var newButton = document.createElement("button");
@@ -130,9 +125,9 @@ function LoadCities() {
 
 function GetCities() {
 	var stringArray = localStorage.getItem("weatherRecents");
-	recents = JSON.parse(stringArray);
-	if (recents === null) {
-		recents = [];
+	pastCities = JSON.parse(stringArray);
+	if (pastCities === null) {
+		pastCities = [];
 	}
 	LoadCities();
 }
@@ -142,17 +137,15 @@ function SetCities() {
 	localStorage.setItem("weatherRecents", stringArray);
 }
 
-
 function AddToRecent(currentCity) {
-	if (cities.length < 10) {
-		cities.unshift(currentCity);
+	if (pastCities.length < 10) {
+		pastCities.unshift(currentCity);
 	} else {
-		cities.splice(9, 1);
-		cities.unshift(currentCity);
+		pastCities.splice(9, 1);
+		pastCities.unshift(currentCity);
 	}
 	LoadCities();
 	SetCities();
 }
 
 GetCities();
-
