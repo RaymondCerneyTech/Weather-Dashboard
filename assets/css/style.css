@@ -14,7 +14,7 @@ header {
 	display: flex;
 	width: 100%;
 	height: 100px;
-	background-image: linear-gradient(to right, #6ba2f6, #5695f6, #4187f6, #2879f4, #006af2);
+	background-image: linear-gradient(to right top, #0027de, #1122e7, #1f1cef, #2b12f7, #3600ff);
 	margin: 0 auto;
 	justify-content: center;
 	align-items: center;
@@ -48,7 +48,8 @@ header h1 {
 
 .search-city {
 	display: block;
-	font-size: large;
+	font-weight: bold;
+	font-size: 40px;
 	height: 150px;
 	border-bottom: black;
 }
@@ -89,6 +90,7 @@ header h1 {
 	display: block;
 	width: 100%;
 	height: 550px;
+	margin-top: 30px;
 	border-top: medium solid black;
 }
 
@@ -97,34 +99,90 @@ header h1 {
 	width: 100%;
 	margin-bottom: 10px;
 	height: 300px;
+	flex-direction: column;
 	border: thin solid black;
+}
+
+.main-labels {
+	display: flex;
+	flex-direction: row;
+}
+
+.city-name,
+.main-date,
+.main-icon {
+	display: flex;
+	font-weight: bold;
+}
+
+.main-temp,
+.main-wind,
+.main-humidity,
+.uv-index {
+	display: flex;
+	flex-direction: row;
+	height: 15%;
+	width: 100%;
+	font-size: 20px;
+	margin: 10px;
 }
 
 .five-day {
 	width: 100%;
 	height: 300px;
-
 	align-items: center;
+	padding-top: 10px;
+}
+
+.days-label {
+	color: black;
+	font-weight: bold;
+	font-size: 30px;
+	margin-bottom: 10px;
 }
 
 .days-container {
 	display: flex;
 	width: 100%;
-	height:70%; 
+	height: 90%;
 	margin: auto;
 }
 
-.days {
+.days-list {
 	display: flex;
 	width: 100%;
-	flex-direction: row;
 	justify-content: space-between;
 }
 
 .day {
 	display: flex;
 	width: 17.5%;
-	height:100%; 
-		background-color:royalblue;
+	height: 100%;
+	background-color: royalblue;
 	border: thin solid black;
+}
+
+.conditions-list {
+	height: 100%;
+	width: 100%;
+}
+
+.date,
+.icon,
+.temp,
+.wind,
+.humidity {
+	display: flex;
+	flex-direction: row;
+	height: 15%;
+	width: 100%;
+	font-weight: bold;
+	font-size: 20px;
+	color: white;
+	margin: 10px;
+}
+
+.date {
+	margin-top: 5px;
+	font-size: 30px;
 }
