@@ -1,6 +1,7 @@
-#
+# Weather Dashboard
 
 ## Instructions:
+Enter a city name and the current temperature and several other metrics will be displayed, along with the next 5 days of information.
 
 ## Details:
 
@@ -8,7 +9,6 @@
 
 - VSCode
 - JavaScript
-- Node.JS
 - OpenWeather One Call API
 
 ## Website:
@@ -17,7 +17,7 @@ https://raymondcerneytech.github.io/Weather-Dashboard/
 
 ### Preview:
 
-![Picture of Weather Dashboard](./assets/images/weatherDashboard.PNG)
+![Picture of Weather Dashboard](./assets/images/weather-dashboard-preview.png)
 
 ### Author:
 
