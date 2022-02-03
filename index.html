@@ -5,33 +5,71 @@
 		<meta charset="UTF-8" />
 		<meta name="viewport" content="width=device-width, initial-scale=1.0" />
 		<meta http-equiv="X-UA-Compatible" content="ie=edge" />
-		<title>Content Title</title>
-		<link rel="stylesheet" href="assets/style.css" />
+		<title>Weather Dashboard</title>
+		<link rel="stylesheet" href="assets/css/reset.css" />
+		<link rel="stylesheet" href="assets/css/style.css" />
 	</head>
 
 	<body>
 		<header>
-			<div class="header-nav">
-				<p id="page-activity-label">Content Activity:<span id="page-activity">
-						Activity </span></p>
-				<button class="nav-button" type="button">Navigation</button>
-			</div>
-			<h1 id="page-name">Content Cube</h1>
+			<h1>
+				Weather Dashboard
+			</h1>
 		</header>
-		<div class="main-container">
-			<div class="content-header">
-				<h2 class="content-label">Content:</h2>
+		<div class="content">
+			<div class="search-bar">
+				<div class="search-city">
+					<h1>Search for a City:</h1>
+					<input class="search-input" title="search" type="text" id="search"
+						placeholder="San Diego" />
+					<button class="search-btn" onclick="myFunction()">Search</button>
+					<div id="response-container"></div>
+				</div>
+				<div>
+					<ul class="cities">
+						<li class ="city">
+						</li>
+						<li class="city">
+						</li>
+						<li class="city">
+						</li>
+						<li class="city">
+						</li>
+						<li class="city">
+						</li>
+						<li class="city">
+						</li>
+						<li class="city">
+						</li>
+						<li class="city">
+						</li>
+					</ul>
+				</div>
 			</div>
-			<div class="content-container">
-				<p class="content">
-					This is content.
-				</p>
-			</div>
-			<div class="content-footer">
-				<button id="start" class="start" type="button">Start</button>
+			<div class="search-results">
+				<div class="city-statistics">
+				</div>
+				<div class="five-day">
+					<h1 class="days-label">
+						5-Day Forecast:
+					</h1>
+					<div class="days-container">
+						<ul class="days">
+							<li class="day">
+							</li>
+							<li class="day">
+							</li>
+							<li class="day">
+							</li>
+							<li class="day">
+							</li>
+							<li class="day">
+							</li>
+						</ul>
+				</div>
 			</div>
 		</div>
-		<script src="assets/script.js"></script>
+		<script src="assets/script/script.js"></script>
 	</body>
 
 </html>
